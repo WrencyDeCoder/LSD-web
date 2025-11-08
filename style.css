@@ -1,0 +1,511 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    line-height: 1.8;
+    background: linear-gradient(to bottom, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #e8e8e8;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveBackground 20s linear infinite;
+}
+
+@keyframes moveBackground {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+header h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    z-index: 1;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+    animation: fadeInDown 1s ease;
+}
+
+header p {
+    font-size: 1.5em;
+    z-index: 1;
+    opacity: 0.95;
+    animation: fadeInUp 1s ease 0.3s both;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section styling */
+section {
+    min-height: 100vh;
+    padding: 100px 10%;
+    position: relative;
+}
+
+.section-title {
+    font-size: 2.8em;
+    color: #fff;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+.normal-text {
+    font-size: 1.2em; margin-bottom: 40px; color: #d1d5db;
+}
+
+
+/* Phần 1 - Bảng so sánh */
+.table-container {
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.table-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.table-container h3 {
+    color: #a78bfa; 
+    font-size: 1.8em; 
+    margin-bottom: 30px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+th, td {
+    padding: 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+tr {
+    transition: all 0.3s ease;
+}
+
+tr:hover {
+    background: rgba(255,255,255,0.08);
+    transform: scale(1.01);
+}
+
+td:first-child {
+    font-weight: 600;
+    color: #a78bfa;
+}
+
+/* Phần 2 - Timeline */
+.timeline {
+    position: relative;
+    margin: 50px 0;
+    gap: 20px;
+    padding-left: 60px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, #667eea, #764ba2, #f093fb);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    margin-bottom: 80px;
+    position: relative;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -52px;
+    top: 10px;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    border: 4px solid #1a1a2e;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+    z-index: 1;
+}
+
+.timeline-content {
+    background: rgba(255,255,255,0.05);
+    padding: 30px;
+    border-radius: 15px;
+    border-left: 4px solid #667eea;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateX(10px);
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3);
+}
+
+.timeline-item h3 {
+    color: #a78bfa;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.timeline-item p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #d1d5db;
+}
+
+.back-button {
+  display: inline-block;
+  margin: 15px 0;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Phần 3 - Thành tựu */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.achievement-card {
+    background: rgba(255,255,255,0.05);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.achievement-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.achievement-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 45px rgba(102, 126, 234, 0.3);
+}
+
+.achievement-icon {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.achievement-card h3 {
+    color: #a78bfa;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.achievement-card p {
+    color: #d1d5db;
+    line-height: 1.6;
+}
+
+/* Phần 4 - Bài học */
+.lessons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.lesson-item {
+    background: rgba(255,255,255,0.05);
+    padding: 35px;
+    border-radius: 15px;
+    border-left: 5px solid #667eea;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.lesson-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.lesson-item:hover {
+    border-left-color: #f093fb;
+    transform: translateX(10px);
+}
+
+.lesson-number {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+
+.lesson-item h3 {
+    display: inline-block;
+    color: #a78bfa;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+.lesson-item p {
+    color: #d1d5db;
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-left: 55px;
+}
+
+/* Phần 5 - Thành viên */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.team-member {
+    background: rgba(255,255,255,0.05);
+    padding: 35px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: scale(0.9);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+.team-member.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.team-member:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
+    border-color: rgba(167, 139, 250, 0.5);
+}
+
+.member-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    overflow: hidden;
+    border: 5px solid rgba(102, 126, 234, 0.5);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    position: relative;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover .member-image img {
+    transform: scale(1.1);
+}
+
+.member-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.team-member h3 {
+    color: #fff;
+    font-size: 1.5em;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.member-id {
+    color: #a78bfa;
+    font-size: 1em;
+    margin-bottom: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.member-role {
+    color: #f093fb;
+    font-size: 1.05em;
+    margin-bottom: 15px;
+    font-weight: 600;
+    padding: 8px 15px;
+    background: rgba(240, 147, 251, 0.1);
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.member-tasks {
+    color: #d1d5db;
+    font-size: 0.95em;
+    line-height: 1.7;
+    text-align: left;
+    padding: 15px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.member-tasks strong {
+    color: #a78bfa;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.05em;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 50px;
+    background: rgba(0,0,0,0.3);
+    color: #d1d5db;
+    font-size: 1em;
+}
+
+footer p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    z-index: 2;
+}
+
+.scroll-indicator::after {
+    content: '↓';
+    font-size: 2em;
+    color: white;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-20px); }
+    60% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 { font-size: 2.5em; }
+    header p { font-size: 1.2em; }
+    section { padding: 80px 5%; }
+    .section-title { font-size: 2em; }
+    .timeline { padding-left: 40px; }
+    .timeline::before { left: 10px; }
+    .timeline-item::before { left: -42px; }
+}

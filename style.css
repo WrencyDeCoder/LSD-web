@@ -242,6 +242,10 @@ header h1 {
     animation: fadeInDown 1s ease;
 }
 
+.item-head {
+    justify-content: center;
+}
+
 header p {
     font-size: 1.8em;
     z-index: 1;
@@ -914,4 +918,25 @@ article li {
     h1 {
         font-size: 1.8em;
     }
+}
+
+figure {
+    text-align: center;
+    margin: 20px auto;
+}
+
+figure img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+figcaption {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #666;
+    font-style: italic;
+}
+
+.unique {
+    border-radius: 35px;
 }
